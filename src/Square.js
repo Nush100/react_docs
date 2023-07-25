@@ -1,6 +1,6 @@
-const Square = () => {
+const Square = ({value}) => {
     return (
-        <button className="square">1</button>
+        <button className="square">{value}</button>
     );
 }
 
