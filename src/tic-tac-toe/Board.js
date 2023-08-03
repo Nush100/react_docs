@@ -1,19 +1,14 @@
 import Square from './Square';
 import './style.css';
-import { useState } from 'react';
 
-const Board = () => {
-    const [squares, setSquares] = useState(Array(9).fill(null));
-    const [xIsNext, setXIsNext] = useState(true);
-
+const Board = ({xIsNext, squares, onPlay}) => {
     const handleClick = (i) => {
         if(calculateWinner(squares) || squares[i])
             return;
         
         const nextSquares = squares.slice();
         (xIsNext) ? nextSquares[i] = 'X' : nextSquares[i] = 'O'
-        setSquares(nextSquares);
-        setXIsNext(!xIsNext);
+        onPlay(nextSquares);
     }
 
     const calculateWinner = (squares) => {
